@@ -1,0 +1,15 @@
+{
+  "name": "xr-token",
+  "version": "1.0.0",
+  "description": "XRADERS is a pioneering decentralized expert curation platform with a mission to bridge the gap between investors and reliable information.  XRADERS empowers users with curated insights from verified experts, all backed by blockchain technology.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "hardhat": "^2.21.0"
+  }
+}
