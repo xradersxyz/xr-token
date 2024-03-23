@@ -8,14 +8,15 @@ async function main() {
   const initialOwner = process.env.BSC_OWNER;
 
   const XrToken = await ethers.getContractFactory("XrToken");
+  const xrToken = await XrToken.deploy(deployer.address);
 
-  const xrToken = await upgrades.deployProxy(XrToken, [initialOwner], {
-    initializer: "initialize",
-  });
+  // const xrToken = await upgrades.deployProxy(XrToken, [initialOwner], {
+  //   initializer: "initialize",
+  // });
 
   console.log("Deployed token contracts address:", await xrToken.getAddress());
   console.log(
-    `npx hardhat verify --network ${(await deployer.provider.getNetwork()).name} ${await xrToken.getAddress()}`
+    `npx hardhat verify --network ${(await deployer.provider.getNetwork()).name} ${await xrToken.getAddress()} ${deployer.address}`
   );
 }
 
