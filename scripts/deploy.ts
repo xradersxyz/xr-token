@@ -2,13 +2,12 @@ import { ethers, upgrades } from "hardhat";
 
 async function main() {
   const [deployer] = await ethers.getSigners();
-
   console.log("Deploying contracts with the account :", deployer.address);
 
-  const initialOwner = process.env.BSC_OWNER;
+  const initialOwner = process.env.BSC_OWNER as string;
 
   const XrToken = await ethers.getContractFactory("XrToken");
-  const xrToken = await XrToken.deploy(deployer.address);
+  const xrToken = await XrToken.deploy(initialOwner);
 
   // const xrToken = await upgrades.deployProxy(XrToken, [initialOwner], {
   //   initializer: "initialize",

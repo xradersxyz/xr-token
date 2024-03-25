@@ -8,30 +8,11 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Permit.sol";
 import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Votes.sol";
 
-contract XrToken is
-    ERC20,
-    ERC20Burnable,
-    ERC20Pausable,
-    Ownable,
-    ERC20Permit,
-    ERC20Votes
-{
+contract XrToken is ERC20, ERC20Burnable, ERC20Permit, ERC20Votes, Ownable {
     constructor(
         address initialOwner
-    ) ERC20("Xraders", "XR") Ownable(initialOwner) ERC20Permit("Xraders") {
+    ) ERC20("Xraders", "XR") ERC20Permit("Xraders") Ownable(initialOwner) {
         _mint(msg.sender, 100000000 * 10 ** decimals());
-    }
-
-    function pause() public onlyOwner {
-        _pause();
-    }
-
-    function unpause() public onlyOwner {
-        _unpause();
-    }
-
-    function mint(address to, uint256 amount) public onlyOwner {
-        _mint(to, amount);
     }
 
     // The following functions are overrides required by Solidity.
@@ -40,7 +21,7 @@ contract XrToken is
         address from,
         address to,
         uint256 value
-    ) internal override(ERC20, ERC20Pausable, ERC20Votes) {
+    ) internal override(ERC20, ERC20Votes) {
         super._update(from, to, value);
     }
 
