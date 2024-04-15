@@ -4,7 +4,8 @@ async function main() {
   const [deployer] = await ethers.getSigners();
   console.log("Upgrade contracts with the account :", deployer.address);
 
-  const existingContractAddress = process.env.BSC_CONTRACT_ADDRESS as string;
+  const existingContractAddress = process.env
+    .XR_CONTRACT_ADDRESS_MAINNET as string;
   console.log("Upgrade contracts address :", existingContractAddress);
 
   const initialOwner = process.env.BSC_OWNER;
